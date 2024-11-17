@@ -17,10 +17,12 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 42
 # endif
 
+size_t	ft_strlen(const char *s);
+char	*ft_strcpy(char *new_str, char *s1, char *s2);
+char	*ft_append(char *txt, char *buff);
 char	*get_next_line(int fd);
 
 #endif
-
