@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ssukhija <ssukhija@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: ssukhija <ssukhija@student.42.fr>          +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2024/11/17 09:37:45 by ssukhija          #+#    #+#             */
 /*   Updated: 2024/11/17 09:37:45 by ssukhija         ###   ########.fr       */
 /*                                                                            */
@@ -29,7 +32,6 @@ char	*ft_strcpy(char *new_str, char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-
 	if (s1 != NULL)
 	{
 		while (s1[i] != '\0')
@@ -40,35 +42,33 @@ char	*ft_strcpy(char *new_str, char *s1, char *s2)
 	}
 	while (s2[j] != '\0')
 	{
-		new_str[i+j] = s2[j];
+		new_str[i + j] = s2[j];
 		j++;
 	}
-	new_str[i+j] = '\0';
+	new_str[i + j] = '\0';
 	return (new_str);
 }
 
-char    *ft_append(char *txt, char *buff)
+char	*ft_append(char *txt, char *buff)
 {
-    char    *str;
-    int     len;
+	char	*str;
+	int		len;
 
-    len = 0;
-    if (buff[0] == '\0')
-        return (txt);
-    if (txt != NULL)
-        len = ft_strlen(txt);
-    else
-    {
-        //printf("here if txt is NULL so FIRST COPY DONE.\n");
-        txt = malloc(1 * sizeof(char));
-        txt[0] = '\0';
-        len = ft_strlen(txt);
-    }
-    str = malloc(((len + ft_strlen(buff)) + 1) * sizeof(char));
-    if (str == NULL || txt == NULL)
-        return (NULL);
-    //str = ft_strmycpy(str, txt, buff);
-    str = ft_strcpy(str, txt, buff);
-    free(txt);
-    return (str);
+	len = 0;
+	if (buff[0] == '\0')
+		return (txt);
+	if (txt != NULL)
+		len = ft_strlen(txt);
+	else
+	{
+		txt = malloc(1 * sizeof(char));
+		txt[0] = '\0';
+		len = ft_strlen(txt);
+	}
+	str = malloc(((len + ft_strlen(buff)) + 1) * sizeof(char));
+	if (str == NULL || txt == NULL)
+		return (NULL);
+	str = ft_strcpy(str, txt, buff);
+	free(txt);
+	return (str);
 }
