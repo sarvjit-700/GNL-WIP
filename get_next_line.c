@@ -78,21 +78,14 @@ char	*ft_keep(char *s)
 	return (keep);
 }
 
-char	*ft_rest(char *s)
+char	*ft_rest(char *s, int x)
 {
 	char	*rest;
-	int		x;
 	int		i;
 	int		len;
 
 	i = 0;
-	x = ft_find_newline(s);
 	len = 0;
-	if (x == -1)
-	{
-		free(s);
-		return (NULL);
-	}
 	while (s[x + 1] != '\0')
 	{
 		len++;
@@ -116,6 +109,7 @@ char	*get_next_line(int fd)
 {
 	static char	*txt;
 	char		*keep;
+	int			x;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -123,6 +117,14 @@ char	*get_next_line(int fd)
 	if (!txt)
 		return (NULL);
 	keep = ft_keep(txt);
-	txt = ft_rest(txt);
+	x = ft_find_newline(txt);
+	if (x == -1)
+	{
+		free(txt);
+		txt = NULL;
+		return (keep);
+	}
+	else
+		txt = ft_rest(txt, x);
 	return (keep);
 }
