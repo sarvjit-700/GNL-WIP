@@ -2,14 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: ssukhija <ssukhija@student.42.fr>          +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2024/11/17 09:37:45 by ssukhija          #+#    #+#             */
-/*   Updated: 2024/11/17 09:37:45 by ssukhija         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssukhija <ssukhija@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/26 23:05:51 by ssukhija          #+#    #+#             */
+/*   Updated: 2024/11/26 23:05:51 by ssukhija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +54,10 @@ char	*ft_append(char *txt, char *buff)
 	len = 0;
 	if (buff[0] == '\0')
 		return (txt);
-	if (txt != NULL)
-		len = ft_strlen(txt);
+	if (txt == NULL)
+		len = 0;
 	else
-	{
-		txt = malloc(1 * sizeof(char));
-		if (txt == NULL)
-			return (NULL);
-		txt[0] = '\0';
 		len = ft_strlen(txt);
-	}
 	str = malloc(((len + ft_strlen(buff)) + 1) * sizeof(char));
 	if (str == NULL)
 	{
@@ -74,6 +65,7 @@ char	*ft_append(char *txt, char *buff)
 		return (NULL);
 	}
 	str = ft_strcpy(str, txt, buff);
-	free(txt);
+	if (txt)
+		free(txt);
 	return (str);
 }
