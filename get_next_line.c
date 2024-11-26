@@ -13,7 +13,7 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-int	ft_find_newline(char *str)
+static int	ft_find_newline(char *str)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ int	ft_find_newline(char *str)
 	return (-1);
 }
 
-char	*ft_read(int fd, char *txt)
+static char	*ft_read(int fd, char *txt)
 {
 	char	*buff;
 	int		num_chars;
@@ -54,7 +54,7 @@ char	*ft_read(int fd, char *txt)
 	return (txt);
 }
 
-char	*ft_keep(char *s)
+static char	*ft_keep(char *s)
 {
 	char	*keep;
 	int		i;
@@ -65,7 +65,10 @@ char	*ft_keep(char *s)
 		return (NULL);
 	x = ft_find_newline(s);
 	if (x == -1)
+	{
 		x = ft_strlen(s);
+		x--;
+	}
 	keep = malloc((x + 2) * sizeof(char));
 	if (keep == NULL)
 		return (NULL);
@@ -78,7 +81,7 @@ char	*ft_keep(char *s)
 	return (keep);
 }
 
-char	*ft_rest(char *s, int x)
+static char	*ft_rest(char *s, int x)
 {
 	char	*rest;
 	int		i;
@@ -118,7 +121,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	keep = ft_keep(txt);
 	x = ft_find_newline(txt);
-	if (x == -1)
+	if (x == -1 || txt[x + 1] == '\0')
 	{
 		free(txt);
 		txt = NULL;

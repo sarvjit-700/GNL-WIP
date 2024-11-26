@@ -62,12 +62,17 @@ char	*ft_append(char *txt, char *buff)
 	else
 	{
 		txt = malloc(1 * sizeof(char));
+		if (txt == NULL)
+			return (NULL);
 		txt[0] = '\0';
 		len = ft_strlen(txt);
 	}
 	str = malloc(((len + ft_strlen(buff)) + 1) * sizeof(char));
-	if (str == NULL || txt == NULL)
+	if (str == NULL)
+	{
+		free(txt);
 		return (NULL);
+	}
 	str = ft_strcpy(str, txt, buff);
 	free(txt);
 	return (str);
