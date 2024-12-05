@@ -51,9 +51,6 @@ char	*ft_append(char *txt, char *buff)
 	char	*str;
 	int		len;
 
-	len = 0;
-	if (buff[0] == '\0')
-		return (txt);
 	if (txt == NULL)
 		len = 0;
 	else
@@ -65,7 +62,6 @@ char	*ft_append(char *txt, char *buff)
 		return (NULL);
 	}
 	str = ft_strcpy(str, txt, buff);
-	if (txt)
-		free(txt);
+	free(txt);
 	return (str);
 }

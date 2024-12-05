@@ -12,26 +12,6 @@
 
 #include "get_next_line.h"
 
-// static int	null_check(char *s)
-// {
-// 	int	i;
-// 	int len;
-
-// 	i = 0;
-// 	len = ft_strlen(s);
-// 	printf("txt has len = %d\n", len);
-// 	while (i <= len)
-// 	{
-// 		if (s[i] == 0)
-// 		{
-// 			printf("txt has EOF i = %d\n", i);
-// 			return (i);
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
 static int	ft_find_newline(char *str)
 {
 	int	i;
